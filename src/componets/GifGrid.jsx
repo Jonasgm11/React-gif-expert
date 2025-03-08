@@ -1,5 +1,6 @@
-import { GIfItem } from "./GIfItem";
+
 import { useFetchGifs } from "../hooks/useFetchGifs";
+import { GifItem } from "./GIfItem";
 
 
 export const GifGrid = ({category}) => {
@@ -16,7 +17,7 @@ export const GifGrid = ({category}) => {
             <div className="card-grid">
                {
                 images.map( (image) => (
-                    <GIfItem 
+                    <GifItem 
                     key={image.id}
                     { ...image }
                    

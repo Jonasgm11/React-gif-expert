@@ -1,9 +1,7 @@
 import React from 'react';
 import { GifItem } from "../../src/componets/GIfItem";
-import { render, screen } from "@testing-library/react"
-import { jest } from '@jest/globals';
+import { render, screen} from "@testing-library/react"
 
-jest.useFakeTimers();
    
 
 describe ('Pruebas en GIfItem', () => {
@@ -13,10 +11,29 @@ describe ('Pruebas en GIfItem', () => {
 
     test('DEBE DE HACER MATCH CON EL SNAPSHOT', () => {
 
-    //    const {container} =
-     render (<GifItem title={title} url={url}/>)
-    //     expect s(container).toMatchSnapshot();
+       const {container} = 
+       render (<GifItem title={title} url={url} />)
+        expect (container).toMatchSnapshot();
+
     })
     
+    test('DEBE MOSTRAR IMAGEN CON URL Y EL ATL INDICADO', () => {
+      
+        render (<GifItem title={title} url={url} />)
+        // screen.debug();
+        // expect (screen.getByRole('img').src).toBe(url)
+        // expect (screen.getByRole('img').alt).toBe(title)
+
+        const {src, alt} = screen.getByRole('img');
+        expect(src).toBe(url);
+        expect(alt).toBe(alt);
+    })
+    
+        test('DEBE MOSTRAR EL TITULO EN EL COMPONENTE', () => {
+
+            render (<GifItem title={title} url={url} />)
+            expect (screen.getByAltText(title)).toBeTruthy();
+        })
+        
 
 })
